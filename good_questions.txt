@@ -1,0 +1,4 @@
+1. Except Itself variation (Except a[i]):  
+   ==> 1. Searching_Sorting16.cpp in "FINAL 450"
+   ==> 2. https://codeforces.com/contest/1077/problem/C : 
+   ==> 3. 
