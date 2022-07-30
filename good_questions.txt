@@ -2,3 +2,7 @@
    ==> 1. Searching_Sorting16.cpp in "FINAL 450"
    ==> 2. https://codeforces.com/contest/1077/problem/C : 
    ==> 3. 
+
+
+2. LCM, GCD Questions : 
+=> https://codeforces.com/contest/1370/problem/B (Just see latest submission)
