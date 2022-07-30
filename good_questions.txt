@@ -6,3 +6,11 @@
 
 2. LCM, GCD Questions : 
 => https://codeforces.com/contest/1370/problem/B (Just see latest submission)
+
+3. Bitwise questions : Think around 1,2,4,8,16,32 (There is one bit increase at these numbers)
+=> Also any number of type 2^m : 10000...... (MSB=1, m-1 times 0)
+=> Also any number of type (2^m)-1 : 11111...... (m times
+
+Questions : 
+=> https://www.codechef.com/OCT21C/problems/ANDSUBAR
+=> https://www.codechef.com/OCT21C/problems/MEXOR
