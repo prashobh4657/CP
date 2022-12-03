@@ -14,3 +14,47 @@
 Questions : 
 => https://www.codechef.com/OCT21C/problems/ANDSUBAR
 => https://www.codechef.com/OCT21C/problems/MEXOR
+
+
+
+4. Two pointer 
+https://www.codechef.com/submit/COLGLF5?tab=statement (implemented by myself) (see solution)
+
+
+
+
+
+Important Points : 
+==> to compare fractions (Trick) : x=a/b and y=c/d then use cross multiplication 
+      if x>y means a/b>c/d ⇒ ad>bc 
+      if y>x means ad<bc
+      if y==x means ad=bc
+   Question : https://www.codechef.com/OCT221B/problems/BUILDINGRACE 
+==>  To use accumulate function everything should be long long int = like this 
+     ll int sum=accumulate (a,a+n,(ll int)0);   //like this calculate sum of array; (here initial sum also should be typecasted to ll int); 
+     as latest template : use this : int sum=accumulate (a,a+n,(int)0); 
+   ====> accumulate(a.begin(),a.end(),(int)0);  //that zero (0) must be typecasted, in case of long long int; 
+==> for(int i=0;i<n;i++) is faster than for(int i=0;i<a.size();i++)
+==> if you are doing a%b then b must be non-zero otherwise will give run-time error. e.g. https://codeforces.com/contest/1411/problem/B 
+==> To pass (just skipping some part of string) any substring (or digital string)
+while(i<s.size()&&s[i]==’ ‘)  //here this condition you must place in left that i<s.size() short circuit evaluation otherwise will give run-time error;
+i++;
+
+while(s[i]==’ ‘&&i<s.size()) //will give run-time error;
+
+==> In x%y
+   if y ranging from 1 to x then the maximum value of x%y is ⇒ (x/2) + 1; 
+   True for both odd and even. https://www.codechef.com/problems/MUFFINS3 
+
+==> If sometimes recursive question is causing problem then make a different function and make that recursive like  
+    https://practice.geeksforgeeks.org/contest/coding-try-outs-amazon/problems#   (See preorder traversal submission)
+
+==> Input string having spaces :   
+    string s;      
+    getline(cin,s); //this will take complete string;
+https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/practice-problems/algorithm/maximum-occurrence-9/  (Striver sheet question)
+==> 
+convert integer to string: to_string(<integer>)      [using to_string() function]
+convert string to integer: stoi(<variable_name>)     [using stoi() function]
+converting integer to corresponding character : Just add ‘0’ to integer,
+like int a=5; and now you want char z and z you want as ‘5’  hence do like this char z=’0’+a; here now z will contain ‘5’.
