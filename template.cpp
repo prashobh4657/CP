@@ -7,6 +7,14 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 
+
+bool isvowel(char z)
+{
+    z=tolower(z);  
+    if(z=='a'||z=='e'||z=='i'||z=='o'||z=='u')
+    return true;
+    return false;
+}
 int32_t main()
 {
     fio;
