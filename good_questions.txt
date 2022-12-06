@@ -22,7 +22,8 @@ https://www.codechef.com/submit/COLGLF5?tab=statement (implemented by myself) (s
 
 
 
-
+5. Prefix-suffix Questions
+https://codeforces.com/contest/474/problem/B 
 
 Important Points : 
 ==> to compare fractions (Trick) : x=a/b and y=c/d then use cross multiplication 
