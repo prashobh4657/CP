@@ -59,3 +59,27 @@ convert integer to string: to_string(<integer>)      [using to_string() function
 convert string to integer: stoi(<variable_name>)     [using stoi() function]
 converting integer to corresponding character : Just add ‘0’ to integer,
 like int a=5; and now you want char z and z you want as ‘5’  hence do like this char z=’0’+a; here now z will contain ‘5’.
+
+
+==> To pass a substring in a string;
+    1. https://www.codechef.com/problems/ADACRA?tab=statement 
+    -->Put a if(s[i]=='U')   
+             {
+                while (i < s.size() && s[i] == 'U') // pass that substring of consecutive U's;
+                 i++;
+                 
+                 countU++; //Count this segment of U;
+             }
+     --> //THIS IF CONDITION ALSO PREVENT to manually do count++ for last suffix substring in the string if exist like DDDUUUUDDUUUUU
+           here no. of segments of U = 2 but in for-loop we count 1 and after termination of for-loop (here wanted substrisng is exist as suffix hence need to add as manually after for-loop hence to prevent that this if condition is very useful, control will break the while loop and then countU++ (to this suffix substring as well) and then terminate for-loop;
+            I mean don't pass substring like this 
+            while(i<s.size()&&s[i]=='U')
+            i++; 
+            in this way you need to take for last suffix wanted substring.
+            hence put a if-condition;
+            
+            Also here i<s.size() condition is also important as s[i] must be valid (as i keep on i++) hence before s[i]=='U' check i<s.size() (SHORT CIRCUIT EVALUATION)
+            hence keep this format in mind to pass any kind of substring.
+            
+            
+    
