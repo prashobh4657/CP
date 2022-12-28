@@ -61,7 +61,7 @@ converting integer to corresponding character : Just add ‘0’ to integer,
 like int a=5; and now you want char z and z you want as ‘5’  hence do like this char z=’0’+a; here now z will contain ‘5’.
 
 
-==> To pass a substring in a string;
+==> To pass a substring in a string;  ========> Z_string formation       
     1. https://www.codechef.com/problems/ADACRA?tab=statement 
     -->Put a if(s[i]=='U')   
              {
