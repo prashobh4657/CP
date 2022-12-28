@@ -31,7 +31,7 @@ bool isvowel(char z)
     return false;
 }
 
-int power(int x, int y, int p) //Modular exponentiation
+int power(int x, int y, int p) //Modular exponentiation ==> pow(x,y)%p;
 {
     int res = 1;
     while (y > 0)
