@@ -30,6 +30,19 @@ bool isvowel(char z)
     return true;
     return false;
 }
+
+int power(int x, int y, int p) //Modular exponentiation
+{
+    int res = 1;
+    while (y > 0)
+    {
+        if (y % 2 == 1)
+            res = ((res % p) * (x % p)) % p;
+        y = y >> 1;
+        x = ((x % p) * (x % p)) % p;
+    }
+    return res % p;
+}
 int32_t main()
 {
     fio;
