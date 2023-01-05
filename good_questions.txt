@@ -25,6 +25,13 @@ https://www.codechef.com/submit/COLGLF5?tab=statement (implemented by myself) (s
 5. Prefix-suffix Questions
 https://codeforces.com/contest/474/problem/B 
 
+
+6. Vector pair important questions : 
+--> https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/ 
+--> https://leetcode.com/problems/merge-intervals/
+--> https://practice.geeksforgeeks.org/problems/af49b143a4ead583e943ca6176fbd7ea55b121ae/1 
+--> https://cses.fi/problemset/task/1619 
+
 Important Points : 
 ==> to compare fractions (Trick) : x=a/b and y=c/d then use cross multiplication 
       if x>y means a/b>c/d ⇒ ad>bc 
