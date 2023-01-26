@@ -23,6 +23,25 @@ using namespace std;
         for(int i=0;i<n;i++)
         cout<<suffix[i]<<" ";cout<<endl;
 */
+/* To build n*64 where v[i] denotes 64-bit representation of a[i]
+  vector<vector<int>> v(n, vector<int>(64, 0));
+        for (int i = 0; i < n; i++)
+        {
+            int temp = a[i];
+            int p = 63;
+            while (temp)
+            {
+                v[i][p--] = temp % 2;
+                temp = temp / 2;
+            }
+        }
+        // for (int i = 0; i < v.size(); i++)
+        //     cout << v[i] << endl;
+*/
+
+
+
+*/
 bool isvowel(char z)
 {
     z=tolower(z);  
