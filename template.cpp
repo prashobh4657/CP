@@ -25,6 +25,21 @@ vector<int> suffix(vector<int> &a)
         suffix[i] = suffix[i + 1] + a[i];
     return suffix;
 }
+vector<int> factors(int n)
+{
+    vector<int> f;
+    for (int i = 1; i * i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            f.push_back(i);
+            if (i * i != n)
+                f.push_back(n / i);
+        }
+    }
+    sort(f.begin(), f.end());
+    return f;
+}
 int binaryToDecimal(string s)
 {
     int ans = 0;
