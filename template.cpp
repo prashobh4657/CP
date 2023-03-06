@@ -7,7 +7,8 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 
-vector<int> prefix(vector<int> &a)
+//Here a.size() must be >=1 otherwise will give run-time error as n would be zero and run-time error will be on line : vector<int> prefix(0);
+vector<int> prefix(vector<int> &a) 
 {
     int n = a.size();
     vector<int> prefix(n);
