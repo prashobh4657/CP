@@ -43,13 +43,10 @@ vector<int> factors(int n)
 }
 int binaryToDecimal(string s)
 {
+    reverse(s.begin(), s.end());
     int ans = 0;
-    int p = 0;
-    for (int i = s.size() - 1; i >= 0; i--)
-    {
-        ans += pow(2, p) * (s[i] - '0');
-        p++;
-    }
+    for (int i = 0; i < s.size(); i++)
+        ans += pow(2, i) * (s[i] - '0');
     return ans;
 }
 string decimalToBinary(int n)
