@@ -57,7 +57,7 @@ string decimalToBinary(int n)
     string s;
     while (n)
     {
-        s.push_back(n % 2);
+        s.push_back((n % 2) + '0');
         n >>= 1;
     }
     reverse(s.begin(), s.end());
