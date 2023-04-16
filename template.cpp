@@ -26,6 +26,27 @@ vector<int> suffix(vector<int> &a)
         suffix[i] = suffix[i + 1] + a[i];
     return suffix;
 }
+vector<vector<int>> prefix_2d(vector<vector<int>> &v)
+{
+    int n = v.size();
+    int m = v[0].size();
+    vector<vector<int>> pre_2d(n, vector<int>(m));
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (i == 0 && j == 0)
+                pre_2d[i][j] = v[i][j];
+            else if (i == 0)
+                pre_2d[i][j] = v[i][j] + pre_2d[i][j - 1];
+            else if (j == 0)
+                pre_2d[i][j] = v[i][j] + pre_2d[i - 1][j];
+            else
+                pre_2d[i][j] = v[i][j] + pre_2d[i - 1][j] + pre_2d[i][j - 1] - pre_2d[i - 1][j - 1];
+        }
+    }
+    return pre_2d;
+}
 vector<int> factors(int n)
 {
     vector<int> f;
