@@ -103,6 +103,16 @@ bool isPrime(int n)
     }
     return true;
 }
+vector<int> primeFactors(int n) //isPrime() also required;
+{
+    vector<int> v;
+    for (int i = 2; i * i <= n; i++) // sqrt is imp;
+    {
+        if (n % i == 0 && isPrime(i))
+            v.push_back(i);
+    }
+    return v;
+}
 
 /* To build n*64 where v[i] denotes 64-bit representation of a[i]
   vector<vector<int>> v(n, vector<int>(64, 0));
@@ -138,23 +148,6 @@ int power(int x, int y, int p) // Modular exponentiation ==> pow(x,y)%p;
     }
     return res % p;
 }
-vector<int> primeFactors(int n)
-{
-    vector<int> ans;
-    int i = 2;
-    while (n > 1)
-    {
-        if (n % i == 0)
-        {
-            ans.push_back(i);
-            n /= i;
-        }
-        else
-            i++;
-    }
-    return ans;
-}
-
 
 int32_t main()
 {
