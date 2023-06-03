@@ -30,7 +30,7 @@ vector<vector<int>> prefix_2d(vector<vector<int>> &v)
 {
     int n = v.size();
     int m = v[0].size();
-    vector<vector<int>> pre_2d(n, vector<int>(m));
+    vector<vector<int>> pre_2d(n, vector<int>(m)); //pre_2d[i][j] denotes sum of all numbers inside rectangle fromed by (0,0) to (i,j);
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
@@ -45,8 +45,21 @@ vector<vector<int>> prefix_2d(vector<vector<int>> &v)
                 pre_2d[i][j] = v[i][j] + pre_2d[i - 1][j] + pre_2d[i][j - 1] - pre_2d[i - 1][j - 1];
         }
     }
-    return pre_2d;
+    return pre_2d;  
 }
+/* 
+Sum of numbers in matrix having top left at (r1,c1) and bottom right at (r2,c2);
+int a, b, c, d;
+a = b = c = d = 0;
+a = pre_2d[r2][c2];
+if (r1 - 1 >= 0)
+    b = pre_2d[r1 - 1][c2];
+if (c1 - 1 >= 0)
+    c = pre_2d[r2][c1 - 1];
+if (r1 - 1 >= 0 && c1 - 1 >= 0)
+    d = pre_2d[r1 - 1][c1 - 1];
+int sum = a - b - c + d;
+*/
 vector<int> factors(int n)
 {
     vector<int> f;
