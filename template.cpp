@@ -161,7 +161,29 @@ int power(int x, int y, int p) // Modular exponentiation ==> pow(x,y)%p;
     }
     return res % p;
 }
-
+int AM(int x, int y) {return (x % mod + y % mod) % mod;}
+int SM(int x, int y) {return ((x % mod) - (y % mod) + mod) % mod;}
+int MM(int x, int y) {return ((x % mod) * (y % mod)) % mod;}
+int modInverse(int A, int M)
+{
+    int r1 = M;
+    int r2 = A;
+    int t1 = 0, t2 = 1;
+    while (r2 > 0)
+    {
+        int q = r1 / r2;
+        int r = r1 - q * r2;
+        r1 = r2;
+        r2 = r;
+        int t = t1 - q * t2;
+        t1 = t2;
+        t2 = t;
+    }
+    if (r1 == 1)
+        return (t1 + mod) % mod;
+    return -1;
+}
+int DM(int x, int y){return ((x % mod) * (modInverse(y, mod) % mod)) % mod;}
 int32_t main()
 {
     fio;
