@@ -142,6 +142,17 @@ vector<int> primeFactors(int n) //isPrime() also required;
         // for (int i = 0; i < v.size(); i++)
         //     cout << v[i] << endl;
 */
+vector<int>binaryV(int n) //Returns binary representation vector of integer n;
+{
+        vector<int>v(64);
+        int p = 63;
+        while (n)
+        {
+            v[p--] = n % 2;
+            n = n / 2;
+        }
+        return v;
+    }
 bool isvowel(char z)
 {
     z = tolower(z);
