@@ -128,19 +128,19 @@ vector<int> primeFactors(int n) //isPrime() also required;
 }
 
 /* To build n*64 where v[i] denotes 64-bit representation of a[i]
-  vector<vector<int>> v(n, vector<int>(64, 0));
-        for (int i = 0; i < n; i++)
-        {
-            int temp = a[i];
-            int p = 63;
-            while (temp)
-            {
-                v[i][p--] = temp % 2;
-                temp = temp / 2;
-            }
-        }
-        // for (int i = 0; i < v.size(); i++)
-        //     cout << v[i] << endl;
+vector<vector<int>> v(n, vector<int>(64, 0));
+for (int i = 0; i < n; i++)
+{
+    int temp = a[i];
+    int p = 63;
+    while (temp)
+    {
+        v[i][p--] = temp % 2;
+        temp = temp / 2;
+    }
+}
+for (int i = 0; i < v.size(); i++)
+    cout << v[i] << endl;
 */
 vector<int>binaryV(int n) //Returns binary representation vector of integer n;
 {
@@ -195,6 +195,20 @@ int modInverse(int A, int M)
     return -1;
 }
 int DM(int x, int y){return ((x % mod) * (modInverse(y, mod) % mod)) % mod;}
+
+
+
+/*
+vector<vector<int>> transpose(m,vector<int>(n)); //transposing so that any column can be get using vector;
+for(int i=0;i<m;i++)
+{
+    for(int j=0;j<n;j++)
+    transpose[i][j]=grid[j][i];
+}
+*/
+
+
+
 int32_t main()
 {
     fio;
