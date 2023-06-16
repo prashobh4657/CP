@@ -207,6 +207,22 @@ for(int i=0;i<m;i++)
 }
 */
 
+int maxSubarraySum(vector<int> &a) //Kadane's;
+{
+    int n=a.size();
+    int curr_sum=0;
+    int max_sum=INT_MIN;
+    for(int i=0;i<n;i++)
+    {
+        curr_sum+=a[i];
+        if(curr_sum<0)
+        curr_sum=0;
+        max_sum=max(max_sum,curr_sum);
+    }
+    if(max_sum==0)  // If all elements are negative then answer should that negative having least magnitude
+    return *max_element(a.begin(),a.end()); 
+    return max_sum;
+}
 
 
 int32_t main()
@@ -220,7 +236,6 @@ int32_t main()
     }
     return 0;
 }
-// Kadanes' algorithm ==> Pick from GFG Submission;
 // Sum of digit ==> https://practice.geeksforgeeks.org/problems/sum-of-digits1742/1 
 // isSubsequence (For both array and string) ==> https://leetcode.com/problems/is-subsequence/description/ (Just pick the latest submission);
 // LCS, LIS (lower_bound submission);
