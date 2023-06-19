@@ -26,6 +26,7 @@ vector<int> suffix(vector<int> &a)
         suffix[i] = suffix[i + 1] + a[i];
     return suffix;
 }
+/*
 vector<vector<int>> prefix_2d(vector<vector<int>> &v)
 {
     int n = v.size();
@@ -47,18 +48,19 @@ vector<vector<int>> prefix_2d(vector<vector<int>> &v)
     }
     return pre_2d;  
 }
-/* 
-Sum of numbers in matrix having top left at (r1,c1) and bottom right at (r2,c2);
-int a, b, c, d;
-a = b = c = d = 0;
-a = pre_2d[r2][c2];
-if (r1 - 1 >= 0)
-    b = pre_2d[r1 - 1][c2];
-if (c1 - 1 >= 0)
-    c = pre_2d[r2][c1 - 1];
-if (r1 - 1 >= 0 && c1 - 1 >= 0)
-    d = pre_2d[r1 - 1][c1 - 1];
-int sum = a - b - c + d;
+int getSum(int r1,int c1,int r2,int c2,vector<vector<int>> &pre_2d) // Sum of numbers in matrix having top left at (r1,c1) and bottom right at (r2,c2);
+{
+    int a, b, c, d; a = b = c = d = 0;
+    a = pre_2d[r2][c2];
+    if (r1 - 1 >= 0)
+        b = pre_2d[r1 - 1][c2];
+    if (c1 - 1 >= 0)
+        c = pre_2d[r2][c1 - 1];
+    if (r1 - 1 >= 0 && c1 - 1 >= 0)
+        d = pre_2d[r1 - 1][c1 - 1];
+    int sum = a - b - c + d;
+    return sum;
+}
 */
 vector<int> factors(int n)
 {
