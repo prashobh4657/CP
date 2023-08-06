@@ -80,9 +80,12 @@ vector<int> factors(int n)
 int binaryToDecimal(string s)
 {
     reverse(s.begin(), s.end());
-    int ans = 0;
+    int ans = 0; int base=1;
     for (int i = 0; i < s.size(); i++)
-        ans += pow(2, i) * (s[i] - '0');
+    {
+        ans += base * (s[i] - '0');
+        base*=2;
+    }
     return ans;
 }
 string decimalToBinary(int n)
