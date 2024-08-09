@@ -179,7 +179,7 @@ int power(int x, int y, int p) // Modular exponentiation ==> pow(x,y)%p;
 }
 int AM(int x, int y) {return ((x % mod) + (y % mod)) % mod;}
 int SM(int x, int y) {return ((x % mod) - (y % mod) + mod) % mod;}
-int MM(int x, int y) {return ((x % mod) * (y % mod)) % mod;}
+int MM(int x, int y) {return ((x % mod) * (y % mod) * 1ll) % mod;}
 int modInverse(int A, int M)
 {
     int r1 = M;
