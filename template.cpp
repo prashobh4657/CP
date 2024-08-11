@@ -99,7 +99,7 @@ string decimalToBinary(int n)
     reverse(s.begin(), s.end());
     return s;
 }
-bool isPalindrome(string s, int i, int j)
+bool isPalindrome(string &s, int i, int j)
 {
     while (i < j)
     {
