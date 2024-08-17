@@ -202,6 +202,31 @@ int modInverse(int A, int M)
 int DM(int x, int y){return ((x % mod) * (modInverse(y, mod) % mod)) % mod;}
 
 
+vector <int> dijkstra(vector<vector<pair<int, int>>> &adj, int S) //S=source; //adj=Directed acyclic graph
+{
+    int n = adj.size();
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>pq;
+    vector<int>dis(n, 1e9);
+    dis[S] = 0;
+    pq.push({ 0,S });
+    while (!pq.empty())
+    {
+        int distance = pq.top().first;
+        int node = pq.top().second;
+        pq.pop();
+        for (int j = 0;j < adj[node].size();j++)   // S----->node----> adj[node][j] (Relax its neighbours);
+        {
+            int adjNode = adj[node][j].first;
+            int edgewt = adj[node][j].second;
+            if (distance + edgewt < dis[adjNode])
+            {
+                dis[adjNode] = distance + edgewt;
+                pq.push({ dis[adjNode],adjNode });
+            }
+        }
+    }
+    return dis;
+}
 
 /*
 vector<vector<int>> transpose(m,vector<int>(n)); //transposing so that any column can be get using vector;
