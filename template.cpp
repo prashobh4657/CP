@@ -26,6 +26,25 @@ vector<int> suffix(vector<int> &a)
         suffix[i] = suffix[i + 1] + a[i];
     return suffix;
 }
+vector<int> prefixMin(vector<int> &a) 
+{
+    int n = a.size();
+    vector<int> prefix(n);
+    prefix[0] = a[0];
+    for (int i = 1; i < n; i++)
+        prefix[i] = min(prefix[i - 1] , a[i]);
+    return prefix;
+}
+vector<int> suffixMax(vector<int> &a)
+{
+    int n = a.size();
+    vector<int> suffix(n);
+    suffix[n - 1] = a[n - 1];
+    for (int i = n - 2; i >= 0; i--)
+        suffix[i] = max(suffix[i + 1] , a[i]);
+    return suffix;
+}
+
 /*
 vector<vector<int>> prefix_2d(vector<vector<int>> &v)
 {
