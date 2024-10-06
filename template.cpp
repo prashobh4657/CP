@@ -80,6 +80,22 @@ int getSum(int r1,int c1,int r2,int c2,vector<vector<int>> &pre_2d) // Sum of nu
     int sum = a - b - c + d;
     return sum;
 }
+vector<string> getWords(string &sentence){
+    int n=sentence.size();
+    vector<string> v;
+    for(int i=0;i<n;i++)
+    {
+        if(sentence[i]!=' ')
+        {
+            string temp;
+            while(sentence[i]!=' '&&i<n)
+                temp.push_back(sentence[i++]);
+            v.push_back(temp);
+        }
+    }
+    return v;
+}
+
 */
 vector<int> factors(int n)
 {
