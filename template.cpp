@@ -35,6 +35,15 @@ vector<int> prefixMin(vector<int> &a)
         prefix[i] = min(prefix[i - 1] , a[i]);
     return prefix;
 }
+vector<int> prefixMax(vector<int> &a) 
+{
+    int n = a.size();
+    vector<int> prefix(n);
+    prefix[0] = a[0];
+    for (int i = 1; i < n; i++)
+        prefix[i] = max(prefix[i - 1] , a[i]);
+    return prefix;
+}
 vector<int> suffixMax(vector<int> &a)
 {
     int n = a.size();
