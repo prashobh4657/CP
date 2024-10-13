@@ -298,14 +298,7 @@ vector <int> dijkstra(vector<vector<pair<int, int>>> &adj, int S) //S=source; //
     return dis;
 }
 
-/*
-vector<vector<int>> transpose(m,vector<int>(n)); //transposing so that any column can be get using vector;
-for(int i=0;i<m;i++)
-{
-    for(int j=0;j<n;j++)
-    transpose[i][j]=grid[j][i];
-}
-*/
+// For transpose matrix : Take the function of LQN 867.
 
 int32_t main()
 {
