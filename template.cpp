@@ -116,6 +116,21 @@ vector<string> getWords(string &sentence){
     }
     return v;
 }
+
+// primeScore(num) returns the count of distinct prime factors of num.
+// The time complexity of the primeScore function is O(root(n)).
+int primeScore(int num) {
+    int count = 0;
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) {
+            count++;  // Found a new prime factor
+            while (num % i == 0) num /= i;  // Remove all occurrences of this factor
+        }
+    }
+    if (num > 1) count++;  // If there's a prime factor > sqrt(num)
+    return count;
+}
+
 vector<int> factors(int n)
 {
     vector<int> f;
