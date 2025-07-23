@@ -1,14 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long int
-#define mod 1000000007
+// #define mod 1000000007
 #define endl "\n"
 #define fio                           \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
+template <typename T>
+istream &operator>>(istream &input, vector<T> &v)
+{
+    for (auto &i : v)
+        cin >> i;
+    return input;
+}
+template <typename T>
+ostream &operator<<(ostream &output, vector<T> &v)
+{
+    for (auto &i : v)
+        cout << i << " ";
+    return output;
+}
 
-//Here a.size() must be >=1 otherwise will give run-time error as n would be zero and run-time error will be on line : vector<int> prefix(0);
-vector<int> prefix(vector<int> &a) 
+// Here a.size() must be >=1 otherwise will give run-time error as n would be zero and run-time error will be on line : vector<int> prefix(0);
+vector<int> prefix(vector<int> &a)
 {
     int n = a.size();
     vector<int> prefix(n);
@@ -26,22 +40,22 @@ vector<int> suffix(vector<int> &a)
         suffix[i] = suffix[i + 1] + a[i];
     return suffix;
 }
-vector<int> prefixMin(vector<int> &a) 
+vector<int> prefixMin(vector<int> &a)
 {
     int n = a.size();
     vector<int> prefix(n);
     prefix[0] = a[0];
     for (int i = 1; i < n; i++)
-        prefix[i] = min(prefix[i - 1] , a[i]);
+        prefix[i] = min(prefix[i - 1], a[i]);
     return prefix;
 }
-vector<int> prefixMax(vector<int> &a) 
+vector<int> prefixMax(vector<int> &a)
 {
     int n = a.size();
     vector<int> prefix(n);
     prefix[0] = a[0];
     for (int i = 1; i < n; i++)
-        prefix[i] = max(prefix[i - 1] , a[i]);
+        prefix[i] = max(prefix[i - 1], a[i]);
     return prefix;
 }
 vector<int> suffixMax(vector<int> &a)
@@ -50,7 +64,7 @@ vector<int> suffixMax(vector<int> &a)
     vector<int> suffix(n);
     suffix[n - 1] = a[n - 1];
     for (int i = n - 2; i >= 0; i--)
-        suffix[i] = max(suffix[i + 1] , a[i]);
+        suffix[i] = max(suffix[i + 1], a[i]);
     return suffix;
 }
 vector<int> suffixMin(vector<int> &a)
@@ -59,57 +73,56 @@ vector<int> suffixMin(vector<int> &a)
     vector<int> suffix(n);
     suffix[n - 1] = a[n - 1];
     for (int i = n - 2; i >= 0; i--)
-        suffix[i] = min(suffix[i + 1] , a[i]);
+        suffix[i] = min(suffix[i + 1], a[i]);
     return suffix;
 }
 
-/*
-vector<vector<int>> prefix_2d(vector<vector<int>> &v)
+// Build 2D Prefix Sum Matrix
+vector<vector<int>> buildPrefix2D(vector<vector<int>> &v)
 {
     int n = v.size();
     int m = v[0].size();
-    vector<vector<int>> pre_2d(n, vector<int>(m)); //pre_2d[i][j] denotes sum of all numbers inside rectangle fromed by (0,0) to (i,j);
-    for (int i = 0; i < n; i++)
+    vector<vector<int>> pre(n, vector<int>(m, 0)); // pre[i][j] = sum from (0,0) to (i,j)
+
+    for (int i = 0; i < n; ++i)
     {
-        for (int j = 0; j < m; j++)
+        for (int j = 0; j < m; ++j)
         {
-            if (i == 0 && j == 0)
-                pre_2d[i][j] = v[i][j];
-            else if (i == 0)
-                pre_2d[i][j] = v[i][j] + pre_2d[i][j - 1];
-            else if (j == 0)
-                pre_2d[i][j] = v[i][j] + pre_2d[i - 1][j];
-            else
-                pre_2d[i][j] = v[i][j] + pre_2d[i - 1][j] + pre_2d[i][j - 1] - pre_2d[i - 1][j - 1];
+            pre[i][j] = v[i][j];
+            if (i > 0)
+                pre[i][j] += pre[i - 1][j];
+            if (j > 0)
+                pre[i][j] += pre[i][j - 1];
+            if (i > 0 && j > 0)
+                pre[i][j] -= pre[i - 1][j - 1];
         }
     }
-    return pre_2d;  
+    return pre;
 }
-int getSum(int r1,int c1,int r2,int c2,vector<vector<int>> &pre_2d) // Sum of numbers in matrix having top left at (r1,c1) and bottom right at (r2,c2);
+
+// Query Submatrix Sum Using Prefix Matrix
+int getSum2D(int r1, int c1, int r2, int c2, vector<vector<int>> &pre)
 {
-    int a, b, c, d; a = b = c = d = 0;
-    a = pre_2d[r2][c2];
-    if (r1 - 1 >= 0)
-        b = pre_2d[r1 - 1][c2];
-    if (c1 - 1 >= 0)
-        c = pre_2d[r2][c1 - 1];
-    if (r1 - 1 >= 0 && c1 - 1 >= 0)
-        d = pre_2d[r1 - 1][c1 - 1];
-    int sum = a - b - c + d;
-    return sum;
+    int total = pre[r2][c2];
+    if (r1 > 0)
+        total -= pre[r1 - 1][c2];
+    if (c1 > 0)
+        total -= pre[r2][c1 - 1];
+    if (r1 > 0 && c1 > 0)
+        total += pre[r1 - 1][c1 - 1];
+    return total;
 }
 
-
-*/
-vector<string> getWords(string &sentence){
-    int n=sentence.size();
+vector<string> getWords(string &sentence)
+{
+    int n = sentence.size();
     vector<string> v;
-    for(int i=0;i<n;i++)
+    for (int i = 0; i < n; i++)
     {
-        if(sentence[i]!=' ')
+        if (sentence[i] != ' ')
         {
             string temp;
-            while(sentence[i]!=' '&&i<n)
+            while (sentence[i] != ' ' && i < n)
                 temp.push_back(sentence[i++]);
             v.push_back(temp);
         }
@@ -119,15 +132,20 @@ vector<string> getWords(string &sentence){
 
 // primeScore(num) returns the count of distinct prime factors of num.
 // The time complexity of the primeScore function is O(root(n)).
-int primeScore(int num) {
+int primeScore(int num)
+{
     int count = 0;
-    for (int i = 2; i * i <= num; i++) {
-        if (num % i == 0) {
-            count++;  // Found a new prime factor
-            while (num % i == 0) num /= i;  // Remove all occurrences of this factor
+    for (int i = 2; i * i <= num; i++)
+    {
+        if (num % i == 0)
+        {
+            count++; // Found a new prime factor
+            while (num % i == 0)
+                num /= i; // Remove all occurrences of this factor
         }
     }
-    if (num > 1) count++;  // If there's a prime factor > sqrt(num)
+    if (num > 1)
+        count++; // If there's a prime factor > sqrt(num)
     return count;
 }
 
@@ -149,11 +167,12 @@ vector<int> factors(int n)
 int binaryToDecimal(string s)
 {
     reverse(s.begin(), s.end());
-    int ans = 0; int base=1;
+    int ans = 0;
+    int base = 1;
     for (int i = 0; i < s.size(); i++)
     {
         ans += base * (s[i] - '0');
-        base*=2;
+        base *= 2;
     }
     return ans;
 }
@@ -190,7 +209,7 @@ bool isPrime(int n)
     }
     return true;
 }
-vector<int> primeFactors(int n) //isPrime() also required;
+vector<int> primeFactors(int n) // isPrime() also required;
 {
     vector<int> v;
     for (int i = 2; i * i <= n; i++) // sqrt is imp;
@@ -200,49 +219,52 @@ vector<int> primeFactors(int n) //isPrime() also required;
     }
     return v;
 }
-bool binarysearch(vector<int> &a,int target)
+bool binarysearch(vector<int> &a, int target)
 {
-    int low=0; int high=a.size()-1;
-    while(low<=high)
+    int low = 0;
+    int high = a.size() - 1;
+    while (low <= high)
     {
-        int mid=low+(high-low)/2;
-        if(a[mid]==target)
+        int mid = low + (high - low) / 2;
+        if (a[mid] == target)
             return true;
-        else if(a[mid]<target)
-            low=mid+1;
+        else if (a[mid] < target)
+            low = mid + 1;
         else
-            high=mid-1;
+            high = mid - 1;
     }
     return false;
 }
 
-
-/* To build n*64 where v[i] denotes 64-bit representation of a[i]
-vector<vector<int>> v(n, vector<int>(64, 0));
-for (int i = 0; i < n; i++)
+// To build n*64 where v[i] denotes 64-bit representation of a[i]
+vector<vector<int>> buildBinaryMatrix(vector<int> &a)
 {
-    int temp = a[i];
-    int p = 63;
-    while (temp)
+    int n = a.size();
+    vector<vector<int>> v(n, vector<int>(64, 0));
+    for (int i = 0; i < n; i++)
     {
-        v[i][p--] = temp % 2;
-        temp = temp / 2;
-    }
-}
-for (int i = 0; i < v.size(); i++)
-    cout << v[i] << endl;
-*/
-vector<int>binaryV(int n) //Returns binary representation vector of integer n;
-{
-        vector<int>v(64);
+        int temp = a[i];
         int p = 63;
-        while (n)
+        while (temp)
         {
-            v[p--] = n % 2;
-            n = n / 2;
+            v[i][p--] = temp % 2;
+            temp /= 2;
         }
-        return v;
     }
+    return v;
+}
+
+vector<int> binaryV(int n) // Returns binary representation vector of integer n;
+{
+    vector<int> v(64);
+    int p = 63;
+    while (n)
+    {
+        v[p--] = n % 2;
+        n = n / 2;
+    }
+    return v;
+}
 bool isvowel(char z)
 {
     z = tolower(z);
@@ -250,21 +272,23 @@ bool isvowel(char z)
         return true;
     return false;
 }
-int power(int x, int y, int p) // Modular exponentiation ==> pow(x,y)%p;
+int power(int x, int y, int mod) // Modular exponentiation ==> pow(x,y)%mod;
 {
     int res = 1;
+    x %= mod;
     while (y > 0)
     {
         if (y % 2 == 1)
-            res = ((res % p) * (x % p)) % p;
+            res = MM(res, x, mod);
         y = y >> 1;
-        x = ((x % p) * (x % p)) % p;
+        x = MM(x, x, mod);
     }
-    return res % p;
+    return res;
 }
-int AM(int x, int y) {return ((x % mod) + (y % mod)) % mod;}
-int SM(int x, int y) {return ((x % mod) - (y % mod) + mod) % mod;}
-int MM(int x, int y) {return ((x % mod) * (y % mod) * 1ll) % mod;}
+
+int AM(int x, int y, int mod) { return ((x % mod) + (y % mod)) % mod; }
+int SM(int x, int y, int mod) { return ((x % mod) - (y % mod) + mod) % mod; }
+int MM(int x, int y, int mod) { return (1LL * (x % mod) * (y % mod)) % mod; }
 int modInverse(int A, int M)
 {
     int r1 = M;
@@ -284,29 +308,34 @@ int modInverse(int A, int M)
         return (t1 + mod) % mod;
     return -1;
 }
-int DM(int x, int y){return ((x % mod) * (modInverse(y, mod) % mod)) % mod;}
+int DM(int x, int y, int mod)
+{
+    int inv = modInverse(y, mod);
+    if (inv == -1)
+        return -1; // Inverse doesn't exist
+    return MM(x, inv, mod);
+}
 
-
-vector <int> dijkstra(vector<vector<pair<int, int>>> &adj, int S) //S=source; //adj=Directed acyclic graph
+vector<int> dijkstra(vector<vector<pair<int, int>>> &adj, int S) // S=source; //adj=Directed acyclic graph
 {
     int n = adj.size();
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>pq;
-    vector<int>dis(n, 1e9);
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    vector<int> dis(n, 1e9);
     dis[S] = 0;
-    pq.push({ 0,S });
+    pq.push({0, S});
     while (!pq.empty())
     {
         int distance = pq.top().first;
         int node = pq.top().second;
         pq.pop();
-        for (int j = 0;j < adj[node].size();j++)   // S----->node----> adj[node][j] (Relax its neighbours);
+        for (int j = 0; j < adj[node].size(); j++) // S----->node----> adj[node][j] (Relax its neighbours);
         {
             int adjNode = adj[node][j].first;
             int edgewt = adj[node][j].second;
             if (distance + edgewt < dis[adjNode])
             {
                 dis[adjNode] = distance + edgewt;
-                pq.push({ dis[adjNode],adjNode });
+                pq.push({dis[adjNode], adjNode});
             }
         }
     }
@@ -326,7 +355,8 @@ int32_t main()
     }
     return 0;
 }
-// Sum of digit ==> https://practice.geeksforgeeks.org/problems/sum-of-digits1742/1 
+
+// Sum of digit ==> https://practice.geeksforgeeks.org/problems/sum-of-digits1742/1
 // isSubsequence (For both array and string) ==> https://leetcode.com/problems/is-subsequence/description/ (Just pick the latest submission);
 // LCS, LIS (lower_bound submission);
 
