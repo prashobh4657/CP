@@ -342,6 +342,24 @@ vector<int> dijkstra(vector<vector<pair<int, int>>> &adj, int S) // S=source; //
     return dis;
 }
 
+// Sum of digit ==> https://practice.geeksforgeeks.org/problems/sum-of-digits1742/1
+int sumOfDigits(int n) {
+    int sum = 0;
+    while (n) {
+        sum += (n % 10);
+        n /= 10;
+    }
+    return sum;
+}
+int productOfDigits(int n) {
+    int product = 1;
+    while (n) {
+        product *= (n % 10);
+        n /= 10;
+    }
+    return product;
+}
+
 // For transpose matrix : Take the function of LQN 867.
 
 int32_t main()
@@ -356,7 +374,7 @@ int32_t main()
     return 0;
 }
 
-// Sum of digit ==> https://practice.geeksforgeeks.org/problems/sum-of-digits1742/1
+
 // isSubsequence (For both array and string) ==> https://leetcode.com/problems/is-subsequence/description/ (Just pick the latest submission);
 // LCS, LIS (lower_bound submission);
 
