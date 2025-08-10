@@ -76,6 +76,20 @@ vector<int> suffixMin(vector<int> &a)
         suffix[i] = min(suffix[i + 1], a[i]);
     return suffix;
 }
+vector<int> prefixXor(vector<int> &a)
+{
+    int n = a.size();
+    vector<int> prefix(n);
+    prefix[0] = a[0];
+    for (int i = 1; i < n; i++)
+        prefix[i] = prefix[i - 1] ^ a[i];
+    return prefix;
+}
+int rangeXor(vector<int> &prefixXor, int l, int r) {
+    if (l == 0) return prefixXor[r];
+    return prefixXor[r] ^ prefixXor[l - 1];
+}
+
 
 // Build 2D Prefix Sum Matrix
 vector<vector<int>> buildPrefix2D(vector<vector<int>> &v)
@@ -380,3 +394,4 @@ int32_t main()
 
 // later add seive to this;
 // TC of map vs unordered map : https://www.geeksforgeeks.org/map-vs-unordered_map-c/
+
