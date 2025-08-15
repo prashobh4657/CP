@@ -91,6 +91,51 @@ int rangeXor(vector<int> &prefixXor, int l, int r) {
 }
 
 
+ int lcm(int a, int b)
+{
+    return (a / __gcd(a, b)) * b; 
+}
+
+vector<int> prefixLCM(vector<int> &a)
+{
+    int n = a.size();
+    vector<int> pref(n);
+    pref[0] = a[0];
+    for (int i = 1; i < n; i++)
+        pref[i] = lcm(pref[i - 1], a[i]);
+    return pref;
+}
+
+vector<int> suffixLCM(vector<int> &a)
+{
+    int n = a.size();
+    vector<int> suff(n);
+    suff[n - 1] = a[n - 1];
+    for (int i = n - 2; i >= 0; i--)
+        suff[i] = lcm(suff[i + 1], a[i]);
+    return suff;
+}
+
+vector<int> prefixGCD(vector<int> &a)
+{
+    int n = a.size();
+    vector<int> pref(n);
+    pref[0] = a[0];
+    for (int i = 1; i < n; i++)
+        pref[i] = __gcd(pref[i - 1], a[i]);
+    return pref;
+}
+
+vector<int> suffixGCD(vector<int> &a)
+{
+    int n = a.size();
+    vector<int> suff(n);
+    suff[n - 1] = a[n - 1];
+    for (int i = n - 2; i >= 0; i--)
+        suff[i] = __gcd(suff[i + 1], a[i]);
+    return suff;
+}
+
 // Build 2D Prefix Sum Matrix
 vector<vector<int>> buildPrefix2D(vector<vector<int>> &v)
 {
@@ -394,4 +439,5 @@ int32_t main()
 
 // later add seive to this;
 // TC of map vs unordered map : https://www.geeksforgeeks.org/map-vs-unordered_map-c/
+
 
