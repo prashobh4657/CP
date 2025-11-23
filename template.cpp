@@ -418,6 +418,25 @@ int productOfDigits(int n) {
     }
     return product;
 }
+vector<int> getDigitsFromNumber(int n) {
+    vector<int> digits;
+    while (n) {
+        if (n % 10 != 0) {
+            digits.push_back(n % 10);
+        }
+        n /= 10;
+    }
+    reverse(digits.begin(), digits.end());
+    return digits;
+}
+int buildNumberFromDigits(vector<int>& digits) {
+    int num = 0;
+    for (int i = 0; i < digits.size(); i++) {
+        num = num * 10 + digits[i];
+    }
+    return num;
+}
+
 
 // For transpose matrix : Take the function of LQN 867.
 
@@ -439,5 +458,6 @@ int32_t main()
 
 // later add seive to this;
 // TC of map vs unordered map : https://www.geeksforgeeks.org/map-vs-unordered_map-c/
+
 
 
