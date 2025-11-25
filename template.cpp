@@ -421,9 +421,7 @@ int productOfDigits(int n) {
 vector<int> getDigitsFromNumber(int n) {
     vector<int> digits;
     while (n) {
-        if (n % 10 != 0) {
-            digits.push_back(n % 10);
-        }
+        digits.push_back(n % 10);
         n /= 10;
     }
     reverse(digits.begin(), digits.end());
@@ -458,6 +456,7 @@ int32_t main()
 
 // later add seive to this;
 // TC of map vs unordered map : https://www.geeksforgeeks.org/map-vs-unordered_map-c/
+
 
 
 
