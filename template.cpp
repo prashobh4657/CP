@@ -172,7 +172,7 @@ int getSum2D(int r1, int c1, int r2, int c2, vector<vector<int>> &pre)
     return total;
 }
 
-vector<string> getWords(string &sentence)
+vector<string> getWordsFromSentence(string &sentence)
 {
     int n = sentence.size();
     vector<string> v;
@@ -456,6 +456,7 @@ int32_t main()
 
 // later add seive to this;
 // TC of map vs unordered map : https://www.geeksforgeeks.org/map-vs-unordered_map-c/
+
 
 
 
