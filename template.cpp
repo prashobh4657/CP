@@ -268,6 +268,10 @@ bool isPrime(int n)
     }
     return true;
 }
+// Optimisations used:
+// 1. Loop only till sqrt(n) → i * i <= n - 1
+// 2. Start marking multiples from i * i : Multiples below i * i are already marked by smaller primes
+// isPrime(n + 1, true) ==> Intially are prime.
 vector<bool> buildSieve(int n) {
     vector<bool> isPrime(n + 1, true);
     if (n >= 0) isPrime[0] = false;
@@ -470,6 +474,7 @@ int32_t main()
 
 // later add seive to this;
 // TC of map vs unordered map : https://www.geeksforgeeks.org/map-vs-unordered_map-c/
+
 
 
 
