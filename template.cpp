@@ -268,6 +268,20 @@ bool isPrime(int n)
     }
     return true;
 }
+vector<bool> buildSieve(int n) {
+    vector<bool> isPrime(n + 1, true);
+    if (n >= 0) isPrime[0] = false;
+    if (n >= 1) isPrime[1] = false;
+    
+    for (long long i = 2; i * i <= n; i++) {
+        if (isPrime[i]) {
+            for (long long j = i * i; j <= n; j += i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+    return isPrime;
+}
 vector<int> primeFactors(int n) // isPrime() also required;
 {
     vector<int> v;
@@ -456,6 +470,7 @@ int32_t main()
 
 // later add seive to this;
 // TC of map vs unordered map : https://www.geeksforgeeks.org/map-vs-unordered_map-c/
+
 
 
 
