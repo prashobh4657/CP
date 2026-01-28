@@ -453,9 +453,6 @@ int buildNumberFromDigits(vector<int>& digits) {
     return num;
 }
 
-
-// Transpose matrix : LQN 867
-
 int32_t main()
 {
     fio;
@@ -468,12 +465,11 @@ int32_t main()
     return 0;
 }
 
-
-// isSubsequence (For both array and string) ==> https://leetcode.com/problems/is-subsequence/description/ (Just pick the latest submission);
+// Transpose of matrix : LQN : 867. Transpose Matrix
+// isSubsequence : LQN : 392. Is Subsequence 
 // LCS, LIS (lower_bound submission);
-
-// later add seive to this;
 // TC of map vs unordered map : https://www.geeksforgeeks.org/map-vs-unordered_map-c/
+
 
 
 
