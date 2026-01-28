@@ -454,7 +454,7 @@ int buildNumberFromDigits(vector<int>& digits) {
 }
 
 
-// For transpose matrix : Take the function of LQN 867.
+// Transpose matrix : LQN 867
 
 int32_t main()
 {
@@ -474,6 +474,7 @@ int32_t main()
 
 // later add seive to this;
 // TC of map vs unordered map : https://www.geeksforgeeks.org/map-vs-unordered_map-c/
+
 
 
 
