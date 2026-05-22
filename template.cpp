@@ -452,6 +452,14 @@ int buildNumberFromDigits(vector<int>& digits) {
     }
     return num;
 }
+int buildNumberFromString(string& s) {
+    int num = 0;
+    for (int i = 0; i < s.size(); i++) {
+        num = num * 10 + (s[i] - 'a');
+    }
+    return num;
+}
+
 
 int32_t main()
 {
